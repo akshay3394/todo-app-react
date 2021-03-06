@@ -54,7 +54,7 @@ const useStyle = makeStyles((theme) => ({
         },
     },
     navbar:{
-        background: "#37474f"
+        background: "#263238",
     } 
   }));
   

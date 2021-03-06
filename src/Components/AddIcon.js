@@ -1,5 +1,9 @@
-import { Fab, makeStyles } from '@material-ui/core';
+import {Fab, makeStyles} from '@material-ui/core';
 import Add from '@material-ui/icons/Add'
+import {useState} from 'react'
+import React from 'react'
+import AddNewTask from './AddNewTask';
+
 
 const useStyle = makeStyles(theme=>({
     fab: {
@@ -13,14 +17,23 @@ const useStyle = makeStyles(theme=>({
 }))
 
 
-const AddIcon = ()=>{
+const AddIcon = ({taskList, setTaskList})=>{
+
+    const [open, setOpen] = useState(false)
+    
+    const openAddNewTask = ()=>{
+        setOpen(true)
+    }
 
     const classes = useStyle();
 
     return(
-        <Fab aria-label="add" className={classes.fab}>
-            <Add/>
-      </Fab>
+        <div>
+            <Fab aria-label="add" className={classes.fab}>
+                <Add onClick={openAddNewTask}/>
+            </Fab>
+            <AddNewTask open={open} setOpen={setOpen} taskList={taskList} setTaskList={setTaskList}/>
+        </div>
     )
 }
 
